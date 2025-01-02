@@ -5,6 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Видеоклипове | Erasmus+ ПГЕЕ "М.В. Ломоносов"</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Отзивчив стил за видеото */
+        section {
+            text-align: center;
+            padding: 20px;
+        }
+
+        video {
+            width: 100%;
+            max-width: 800px; /* Максимална ширина за видеото */
+            height: auto;
+        }
+
+        /* Адаптация за мобилни устройства */
+        @media (max-width: 600px) {
+            video {
+                max-width: 100%; /* Видеото заема цялата ширина на екрана */
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -21,7 +41,7 @@
 
     <section>
         <h2>Видео материали</h2>
-        <video controls width="600">
+        <video controls>
             <source src="videoplayback.mp4" type="video/mp4">
             Вашият браузър не поддържа видео.
         </video>
