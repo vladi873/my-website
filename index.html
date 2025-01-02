@@ -52,13 +52,14 @@
             background: rgba(0, 0, 0, 0.7); /* Прозрачен черен фон */
             color: #fff;
             text-align: center;
-            padding: 20px;
+            padding: 15px 20px;
             font-size: 16px;
             font-family: Arial, sans-serif;
             justify-content: center;
             align-items: center;
             z-index: 1000;
             box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.5);
+            box-sizing: border-box;
         }
 
         #cookieConsentMessage button {
@@ -74,6 +75,19 @@
 
         #cookieConsentMessage button:hover {
             background-color: #45a049;
+        }
+
+        /* Стилове за мобилни устройства */
+        @media (max-width: 768px) {
+            #cookieConsentMessage {
+                font-size: 14px; /* Малко по-малък шрифт за мобилни устройства */
+                padding: 12px 15px; /* По-малко пространство */
+            }
+
+            #cookieConsentMessage button {
+                padding: 8px 15px; /* Намаляване на размера на бутона */
+                font-size: 14px; /* По-малък размер на шрифта на бутона */
+            }
         }
     </style>
 </head>
