@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерия | Erasmus+ ПГЕЕ "М.В. Ломоносов"</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Fancybox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css">
+</head>
+<body>
+    <header>
+        <h1>Галерия</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">За програмата</a></li>
+                <li><a href="gallery.html">Галерия</a></li>
+                <li><a href="presentations.html">Презентации</a></li>
+                <li><a href="videos.html">Видеоклипове</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Снимки от програмата</h2>
+        <div class="gallery-container">
+            <!-- Добавяме Fancybox атрибутите -->
+            <a data-fancybox="gallery" href="logo1.jpg">
+                <img src="logo1.jpg" alt="Снимка 1">
+            </a>
+            <a data-fancybox="gallery" href="logo2.jpg">
+                <img src="logo2.jpg" alt="Снимка 2">
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 ПГЕЕ "М.В. Ломоносов" – Всички права запазени.</p>
+    </footer>
+
+    <!-- Fancybox JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
+    <script>
+        // Активиране на Fancybox с zoom бутон
+        Fancybox.bind("[data-fancybox='gallery']", {
+            Toolbar: {
+                display: [
+                    "zoom",   // Бутон за zoom
+                    "close",  // Бутон за затваряне
+                    "fullscreen", // Бутон за цял екран
+                    "thumbs", // Бутон за миниатюри
+                ]
+            },
+            Thumbs: {
+                autoStart: true, // Автоматично показване на миниатюрите
+            }
+        });
+    </script>
+</body>
+</html>
