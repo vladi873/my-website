@@ -6,23 +6,41 @@
     <title>Erasmus+ ПГЕЕ "М.В. Ломоносов"</title>
     <link rel="stylesheet" href="styles.css">
     <script>
+        // Забранява контекстното меню
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Забранява селекция на текст
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+        });
+
+        // Забранява специфични клавишни комбинации
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'c' || e.key === 'C' || e.key === 's' || e.key === 'S')) {
+                e.preventDefault();
+            }
+            if (e.ctrlKey && e.shiftKey && (e.key === 'i' || e.key === 'I' || e.key === 'j' || e.key === 'J')) {
+                e.preventDefault();
+            }
+        });
+
         // Проверка дали бисквитката за съгласие вече е поставена
         window.onload = function() {
             if (!getCookie("cookieConsent")) {
-                // Показване на съобщението за бисквитките
                 document.getElementById("cookieConsentMessage").style.display = "flex";
             }
         };
 
-        // Функция за създаване на бисквитка
+        // Функции за работа с бисквитки
         function setCookie(name, value, days) {
             var date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); // Изчислява изтичането
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
             var expires = "expires=" + date.toUTCString();
             document.cookie = name + "=" + value + ";" + expires + ";path=/";
         }
 
-        // Функция за взимане на бисквитка по име
         function getCookie(name) {
             var nameEQ = name + "=";
             var ca = document.cookie.split(';');
@@ -35,13 +53,19 @@
             return null;
         }
 
-        // Функция за съгласие с бисквитки
         function acceptCookies() {
-            setCookie("cookieConsent", "accepted", 365); // Записва бисквитката за 1 година
-            document.getElementById("cookieConsentMessage").style.display = "none"; // Скрива съобщението
+            setCookie("cookieConsent", "accepted", 365);
+            document.getElementById("cookieConsentMessage").style.display = "none";
         }
     </script>
     <style>
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
         /* Стил за съобщението за бисквитки */
         #cookieConsentMessage {
             display: none;
@@ -49,7 +73,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.7); /* Прозрачен черен фон */
+            background: rgba(0, 0, 0, 0.7);
             color: #fff;
             text-align: center;
             padding: 15px 20px;
@@ -76,22 +100,10 @@
         #cookieConsentMessage button:hover {
             background-color: #45a049;
         }
-
-        /* Стилове за мобилни устройства */
-        @media (max-width: 768px) {
-            #cookieConsentMessage {
-                font-size: 14px; /* Малко по-малък шрифт за мобилни устройства */
-                padding: 12px 15px; /* По-малко пространство */
-            }
-
-            #cookieConsentMessage button {
-                padding: 8px 15px; /* Намаляване на размера на бутона */
-                font-size: 14px; /* По-малък размер на шрифта на бутона */
-            }
-        }
     </style>
 </head>
 <body>
+    <!-- Съдържание на страницата -->
     <header>
         <h1>Програма Erasmus+</h1>
         <nav>
@@ -104,20 +116,8 @@
         </nav>
     </header>
 
-    <section id="logos">
-        <h2>Лога на партньорите</h2>
-        <div class="logos-container">
-            <img src="assets/logo1.png" alt="Лого 1">
-            <img src="assets/logo2.png" alt="Лого 2">
-            <img src="assets/logo3.png" alt="Лого 3">
-            <img src="assets/logo4.png" alt="Лого 4">
-            <img src="assets/logo5.png" alt="Лого 5">
-            <img src="assets/logo6.png" alt="Лого 6">
-        </div>
-    </section>
-    
     <section>
-        <h2>ЦЕЛИ </h2>
+        <h2>ЦЕЛИ</h2>
         <p>
             С работата си по проекти искаме да повишим привлекателността на професиите, да внедрим иновациите в професионалното образование и обучение с цел да сме по-конкурентноспособни на нашия и европейският пазар, да мотивираме нашите ученици и спомогнем за успешната реализация на пазара на труда на ползвателите на този проект и в последствие да използваме придобития опит и материали в обучението.
         </p>
@@ -125,11 +125,11 @@
 
     <!-- Съобщение за бисквитки -->
     <div id="cookieConsentMessage">
-        <p>Използваме бисквитки, за да подобрим вашето преживяване на нашия сайт. Когато продължите да използвате сайта, вие се съгласявате с нашата политика за бисквитки. <button onclick="acceptCookies()">Приемам</button></p>
+        <p>Използваме бисквитки, за да подобрим вашето преживяване. <button onclick="acceptCookies()">Приемам</button></p>
     </div>
 
     <footer>
-        <p>© 2025 ПГЕЕ "М.В. Ломоносов" – Всички права запазени.</p>
+        <p class="prevent-select">© 2025 ПГЕЕ "М.В. Ломоносов" – Всички права запазени.</p>
     </footer>
 </body>
 </html>
